@@ -198,10 +198,6 @@ function render(){
       <div class="food-illustration">
         <img src="${o.m[3]}" alt="${o.m[1]}" onerror="this.src='https://placehold.co/600x400/f7dcc2/70422c?text=Add+Food+Image'">
       </div>
-      <div class="image-editor">
-        <input value="${o.m[3]}" onchange="updateImage(${o.i}, this.value)" placeholder="Paste editable image URL here">
-        <small>Paste a direct image URL to change this food photo.</small>
-      </div>
       <div class="card-body">
         <div class="category">${o.m[0]}</div>
         <h3>${o.m[1]}</h3>
