@@ -33,7 +33,11 @@ button,input,textarea,select{font:inherit}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 5px 20px rgba(40,25,15,.04);transition:.2s}
 .card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.food-illustration{height:145px;display:grid;place-items:center;font-size:72px;background:linear-gradient(135deg,#fff1df,#f7dcc2)}
+.food-illustration{height:190px;background:#f7dcc2;overflow:hidden}
+.food-illustration img{width:100%;height:100%;object-fit:cover;display:block}
+.image-editor{padding:10px 18px 0}
+.image-editor input{width:100%;padding:9px 10px;border:1px dashed var(--line);border-radius:9px;font-size:11px;color:var(--muted);background:#fffdf9}
+.image-editor small{display:block;color:var(--muted);font-size:10px;margin:5px 0 0}
 .card-body{padding:18px}.category{font-size:11px;color:var(--accent);font-weight:900;text-transform:uppercase;letter-spacing:.06em}.card h3{margin:7px 0;font-size:18px}
 .desc{font-size:13px;color:var(--muted);min-height:35px;line-height:1.4}.price{font-size:21px;font-weight:900;margin:13px 0}.add{width:100%;padding:12px;border:0;border-radius:10px;background:#f2e7dc;font-weight:900;cursor:pointer}.add:hover{background:#ead6c4}
 .cart{position:fixed;right:20px;bottom:20px;z-index:30;background:var(--accent);color:white;border:0;border-radius:50px;padding:15px 20px;font-weight:900;box-shadow:0 12px 30px rgba(100,40,20,.28);cursor:pointer}.badge{background:white;color:var(--accent);padding:2px 7px;border-radius:20px;margin-left:5px}
@@ -127,45 +131,45 @@ footer{background:#201815;color:#fff;padding:45px 5%;text-align:center;margin-to
 
 <script>
 const menu = [
-  ["Vegetable Delicacies","Mixed Veg. Momo",70,"🥟","Soft steamed dumplings filled with vegetables."],
-  ["Vegetable Delicacies","Fried Momo",80,"🥟","Crispy fried vegetable dumplings."],
-  ["Vegetable Delicacies","Chowmein",100,"🍝","Stir-fried noodles with vegetables."],
-  ["Vegetable Delicacies","Thukpa",100,"🍜","Warm and comforting Tibetan noodle soup."],
-  ["Vegetable Delicacies","Plain Rice",90,"🍚","Simple freshly cooked rice."],
-  ["Vegetable Delicacies","Fried Rice",90,"🍛","Flavourful stir-fried rice."],
-  ["Vegetable Delicacies","Thaen-thuk",120,"🍲","Traditional hand-pulled noodle soup."],
-  ["Vegetable Delicacies","Veg. Ramen",150,"🍜","A hearty bowl of vegetable ramen."],
+  ["Vegetable Delicacies","Mixed Veg. Momo",70,"https://YOUR-IMAGE-LINK-HERE/mixed-veg-momo.jpg","Soft steamed dumplings filled with vegetables."],
+  ["Vegetable Delicacies","Fried Momo",80,"https://YOUR-IMAGE-LINK-HERE/fried-momo.jpg","Crispy fried vegetable dumplings."],
+  ["Vegetable Delicacies","Chowmein",100,"https://YOUR-IMAGE-LINK-HERE/veg-chowmein.jpg","Stir-fried noodles with vegetables."],
+  ["Vegetable Delicacies","Thukpa",100,"https://YOUR-IMAGE-LINK-HERE/veg-thukpa.jpg","Warm and comforting Tibetan noodle soup."],
+  ["Vegetable Delicacies","Plain Rice",90,"https://YOUR-IMAGE-LINK-HERE/plain-rice.jpg","Simple freshly cooked rice."],
+  ["Vegetable Delicacies","Fried Rice",90,"https://YOUR-IMAGE-LINK-HERE/veg-fried-rice.jpg","Flavourful stir-fried rice."],
+  ["Vegetable Delicacies","Thaen-thuk",120,"https://YOUR-IMAGE-LINK-HERE/veg-thaen-thuk.jpg","Traditional hand-pulled noodle soup."],
+  ["Vegetable Delicacies","Veg. Ramen",150,"https://YOUR-IMAGE-LINK-HERE/veg-ramen.jpg","A hearty bowl of vegetable ramen."],
 
-  ["Egg Delicacies","Egg Thukpa",120,"🍜","Warm noodle soup with egg."],
-  ["Egg Delicacies","Egg Chowmein",130,"🍝","Noodles tossed with egg and seasoning."],
-  ["Egg Delicacies","Egg Fried Rice",130,"🍳","Fried rice with delicious egg."],
-  ["Egg Delicacies","Double Omelette",50,"🍳","A freshly prepared double omelette."],
-  ["Egg Delicacies","Egg Ramen",160,"🍜","Rich ramen with egg."],
+  ["Egg Delicacies","Egg Thukpa",120,"https://YOUR-IMAGE-LINK-HERE/egg-thukpa.jpg","Warm noodle soup with egg."],
+  ["Egg Delicacies","Egg Chowmein",130,"https://YOUR-IMAGE-LINK-HERE/egg-chowmein.jpg","Noodles tossed with egg and seasoning."],
+  ["Egg Delicacies","Egg Fried Rice",130,"https://YOUR-IMAGE-LINK-HERE/egg-fried-rice.jpg","Fried rice with delicious egg."],
+  ["Egg Delicacies","Double Omelette",50,"https://YOUR-IMAGE-LINK-HERE/double-omelette.jpg","A freshly prepared double omelette."],
+  ["Egg Delicacies","Egg Ramen",160,"https://YOUR-IMAGE-LINK-HERE/egg-ramen.jpg","Rich ramen with egg."],
 
-  ["Yellow Laphing","Dry Laphing",50,"🍝","Popular Tibetan-style spicy snack."],
-  ["Yellow Laphing","Soupy Laphing",50,"🍲","Soft laphing served with flavourful soup."],
-  ["Yellow Laphing","Wai-wai Stuffed Dry Laphing",60,"🌶️","Stuffed laphing with Wai-wai flavour."],
-  ["Yellow Laphing","Wai-wai Stuffed Soupy Laphing",60,"🍲","Stuffed laphing in a comforting soup."],
+  ["Yellow Laphing","Dry Laphing",50,"https://YOUR-IMAGE-LINK-HERE/dry-laphing.jpg","Popular Tibetan-style spicy snack."],
+  ["Yellow Laphing","Soupy Laphing",50,"https://YOUR-IMAGE-LINK-HERE/soupy-laphing.jpg","Soft laphing served with flavourful soup."],
+  ["Yellow Laphing","Wai-wai Stuffed Dry Laphing",60,"https://YOUR-IMAGE-LINK-HERE/waiwai-dry-laphing.jpg","Stuffed laphing with Wai-wai flavour."],
+  ["Yellow Laphing","Wai-wai Stuffed Soupy Laphing",60,"https://YOUR-IMAGE-LINK-HERE/waiwai-soupy-laphing.jpg","Stuffed laphing in a comforting soup."],
 
-  ["Buff Delicacies","Buff Momo",90,"🥟","Steamed buff-filled dumplings."],
-  ["Buff Delicacies","Buff Fried Momo",100,"🥟","Crispy fried buff momos."],
-  ["Buff Delicacies","Buff Chowmein",120,"🍝","Stir-fried noodles with buff."],
-  ["Buff Delicacies","Buff Thukpa",90,"🍜","Traditional noodle soup with buff."],
-  ["Buff Delicacies","Buff Fried Rice",120,"🍛","Flavourful fried rice with buff."],
-  ["Buff Delicacies","Buff Thaen-thuk",160,"🍲","Hand-pulled noodles with buff."],
-  ["Buff Delicacies","Special Buff Thukpa",120,"🍜","A special hearty thukpa bowl."],
-  ["Buff Delicacies","Sharp-ta (Dry)",230,"🥩","Tibetan-style dry buff preparation."],
-  ["Buff Delicacies","Sharp-ta (Gravy)",250,"🍛","Rich and flavourful buff gravy."],
-  ["Buff Delicacies","Sha-bhag-lab",120,"🥙","A satisfying Tibetan stuffed bread dish."],
-  ["Buff Delicacies","Buff Ramen",160,"🍜","Comforting ramen with buff."],
+  ["Buff Delicacies","Buff Momo",90,"https://YOUR-IMAGE-LINK-HERE/buff-momo.jpg","Steamed buff-filled dumplings."],
+  ["Buff Delicacies","Buff Fried Momo",100,"https://YOUR-IMAGE-LINK-HERE/buff-fried-momo.jpg","Crispy fried buff momos."],
+  ["Buff Delicacies","Buff Chowmein",120,"https://YOUR-IMAGE-LINK-HERE/buff-chowmein.jpg","Stir-fried noodles with buff."],
+  ["Buff Delicacies","Buff Thukpa",90,"https://YOUR-IMAGE-LINK-HERE/buff-thukpa.jpg","Traditional noodle soup with buff."],
+  ["Buff Delicacies","Buff Fried Rice",120,"https://YOUR-IMAGE-LINK-HERE/buff-fried-rice.jpg","Flavourful fried rice with buff."],
+  ["Buff Delicacies","Buff Thaen-thuk",160,"https://YOUR-IMAGE-LINK-HERE/buff-thaen-thuk.jpg","Hand-pulled noodles with buff."],
+  ["Buff Delicacies","Special Buff Thukpa",120,"https://YOUR-IMAGE-LINK-HERE/special-buff-thukpa.jpg","A special hearty thukpa bowl."],
+  ["Buff Delicacies","Sharp-ta (Dry)",230,"https://YOUR-IMAGE-LINK-HERE/sharp-ta-dry.jpg","Tibetan-style dry buff preparation."],
+  ["Buff Delicacies","Sharp-ta (Gravy)",250,"https://YOUR-IMAGE-LINK-HERE/sharp-ta-gravy.jpg","Rich and flavourful buff gravy."],
+  ["Buff Delicacies","Sha-bhag-lab",120,"https://YOUR-IMAGE-LINK-HERE/sha-bhag-lab.jpg","A satisfying Tibetan stuffed bread dish."],
+  ["Buff Delicacies","Buff Ramen",160,"https://YOUR-IMAGE-LINK-HERE/buff-ramen.jpg","Comforting ramen with buff."],
 
-  ["Chicken Delicacies","Chicken Momo",90,"🥟","Juicy chicken-filled dumplings."],
-  ["Chicken Delicacies","Chicken Chowmein",120,"🍝","Classic chicken stir-fried noodles."],
-  ["Chicken Delicacies","Chicken Thukpa",120,"🍜","Warm Tibetan chicken noodle soup."],
-  ["Chicken Delicacies","Chicken Fried Rice",120,"🍛","Fried rice with chicken."],
-  ["Chicken Delicacies","Chicken Thaen-thuk",160,"🍲","Traditional hand-pulled noodles with chicken."],
-  ["Chicken Delicacies","Chicken Sha-bhag-lab",120,"🥙","Delicious Tibetan-style stuffed bread."],
-  ["Chicken Delicacies","Chicken Ramen",160,"🍜","A hearty bowl of chicken ramen."]
+  ["Chicken Delicacies","Chicken Momo",90,"https://YOUR-IMAGE-LINK-HERE/chicken-momo.jpg","Juicy chicken-filled dumplings."],
+  ["Chicken Delicacies","Chicken Chowmein",120,"https://YOUR-IMAGE-LINK-HERE/chicken-chowmein.jpg","Classic chicken stir-fried noodles."],
+  ["Chicken Delicacies","Chicken Thukpa",120,"https://YOUR-IMAGE-LINK-HERE/chicken-thukpa.jpg","Warm Tibetan chicken noodle soup."],
+  ["Chicken Delicacies","Chicken Fried Rice",120,"https://YOUR-IMAGE-LINK-HERE/chicken-fried-rice.jpg","Fried rice with chicken."],
+  ["Chicken Delicacies","Chicken Thaen-thuk",160,"https://YOUR-IMAGE-LINK-HERE/chicken-thaen-thuk.jpg","Traditional hand-pulled noodles with chicken."],
+  ["Chicken Delicacies","Chicken Sha-bhag-lab",120,"https://YOUR-IMAGE-LINK-HERE/chicken-sha-bhag-lab.jpg","Delicious Tibetan-style stuffed bread."],
+  ["Chicken Delicacies","Chicken Ramen",160,"https://YOUR-IMAGE-LINK-HERE/chicken-ramen.jpg","A hearty bowl of chicken ramen."]
 ];
 
 let cart = JSON.parse(localStorage.getItem("amdoCart") || "{}");
@@ -191,7 +195,13 @@ function render(){
 
   document.getElementById("grid").innerHTML = items.length ? items.map(o => `
     <article class="card">
-      <div class="food-illustration">${o.m[3]}</div>
+      <div class="food-illustration">
+        <img src="${o.m[3]}" alt="${o.m[1]}" onerror="this.src='https://placehold.co/600x400/f7dcc2/70422c?text=Add+Food+Image'">
+      </div>
+      <div class="image-editor">
+        <input value="${o.m[3]}" onchange="updateImage(${o.i}, this.value)" placeholder="Paste editable image URL here">
+        <small>Paste a direct image URL to change this food photo.</small>
+      </div>
       <div class="card-body">
         <div class="category">${o.m[0]}</div>
         <h3>${o.m[1]}</h3>
@@ -201,6 +211,23 @@ function render(){
       </div>
     </article>`).join("") :
     `<div class="empty">No dishes found. Please try another search.</div>`;
+}
+
+function updateImage(i, url){
+  url = url.trim();
+  if(!url) return;
+  menu[i][3] = url;
+  const savedImages = JSON.parse(localStorage.getItem("amdoMenuImages") || "{}");
+  savedImages[i] = url;
+  localStorage.setItem("amdoMenuImages", JSON.stringify(savedImages));
+  render();
+}
+
+function loadSavedImages(){
+  const savedImages = JSON.parse(localStorage.getItem("amdoMenuImages") || "{}");
+  Object.keys(savedImages).forEach(i => {
+    if(menu[i]) menu[i][3] = savedImages[i];
+  });
 }
 
 function add(i){
@@ -246,7 +273,7 @@ function renderCart(){
     const sub = m[2] * cart[k];
     total += sub;
     return `<div class="row">
-      <div class="mini">${m[3]}</div>
+      <div class="mini"><img src="${m[3]}" alt="${m[1]}" style="width:42px;height:42px;border-radius:8px;object-fit:cover"></div>
       <div class="name"><b>${m[1]}</b><br><small>₹${m[2]} each</small></div>
       <div class="qty">
         <button onclick="change(${k},-1)">−</button>
@@ -355,7 +382,7 @@ ${currentOrder.notes ? "\nNotes: " + currentOrder.notes : ""}`;
 
   // Restaurant WhatsApp number with country code, digits only.
   // Change this number if required.
-  const restaurantWhatsApp = "918449799894";
+  const restaurantWhatsApp = "917455892741";
 
   window.open(
     `https://wa.me/${restaurantWhatsApp}?text=${encodeURIComponent(message)}`,
@@ -377,6 +404,7 @@ function newOrder(){
   renderCart();
 }
 
+loadSavedImages();
 document.getElementById("search").addEventListener("input", render);
 render();
 updateCount();
