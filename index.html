@@ -80,8 +80,7 @@ function placeOrder(){
  if(!name||!phone){alert("Please enter your name and phone number.");return;}
  let lines=keys.map(k=>`${menu[k][1]} x ${cart[k]} = ₹${menu[k][2]*cart[k]}`), total=keys.reduce((s,k)=>s+menu[k][2]*cart[k],0);
  let text=`Hello Amdo Samdup Restaurant,%0A%0A*New Order*%0AName: ${encodeURIComponent(name)}%0APhone: ${encodeURIComponent(phone)}%0AOrder type: ${encodeURIComponent(type)}%0A%0A${lines.map(encodeURIComponent).join("%0A")}%0A%0ATotal: ₹${total}%0A${notes?"Notes: "+encodeURIComponent(notes):""}`;
- // Replace 918449799894 with the restaurant's WhatsApp number before publishing.
- const restaurantWhatsApp="8449799894";
+ const restaurantWhatsApp="917455892741";
  if(restaurantWhatsApp.includes("X")){alert("The ordering system is ready. Add the restaurant's WhatsApp number in the JavaScript code where marked, then orders will open in WhatsApp.");return;}
  window.open(`https://wa.me/${restaurantWhatsApp}?text=${text}`,"_blank");
 }
